@@ -1,0 +1,12 @@
+<div class="row">
+  <h1>Users</h1>
+
+
+  <%= debug @users %>
+
+  <% @users.each do |user| %>
+    <div class="user-list-item">
+      <h2><%= user.full_name %></h2>
+    </div>
+  <% end %>
+</div>
