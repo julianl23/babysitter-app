@@ -1,0 +1,46 @@
+<h2><%= @user.full_name %></h2>
+<div class="row user-info">
+  <div class="col-xs-12">
+    <p>Location: <%= @user.location %></p>
+    <p>Member since: <%= @user.created_at.strftime '%B %Y' %></p>
+    <p>
+      <%= @user.description %>
+    </p>
+  </div>
+</div>
+
+<div class="row schedule-wrap">
+  <div class="col-xs-12">
+    <h3>My Schedule</h3>
+    <div class="calendar">
+      <table>
+        <thead>
+          <tr>
+            <th class="calendar-title" colspan="8"><%= format_week_of_string @days_from_this_week %></th>
+          </tr>
+          <tr class="calendar-day-headers">
+            <th></th>
+            <% @days_from_this_week.each do |day| %>
+              <th><%= day.strftime '%A, %B %-d, %Y' %></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% [*0..23].each do |hour| %>
+            <tr>
+              <td class="hour-cell"><%= format_hour hour %></td>
+              <% 7.times do |index| %>
+                <td>
+                  <button data-id="<%= index %>">
+                    <%= fa_icon 'plus' %>
+                    <span class="sr-only">Book time</span>
+                  </button>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

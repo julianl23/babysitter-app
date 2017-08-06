@@ -1,0 +1,8 @@
+<h2>Featured Babysitters</h2>
+<div class="row">
+  <% @featured_babysitters.each do |babysitter| %>
+    <div class="col-xs-12 col-md-4">
+      <%= render partial: 'user_list_item', locals: { babysitter: babysitter }  %>
+    </div>
+  <% end %>
+</div>

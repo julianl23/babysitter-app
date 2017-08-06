@@ -1,0 +1,22 @@
+.calendar {
+  th.calendar-title {
+    font-size: 1.17em;
+    text-align: center;
+  }
+
+  .calendar-day-headers {
+    th {
+      font-weight: normal;
+      padding: 0 2.5px;
+    }
+  }
+
+  td {
+    border: 1px solid #bbb;
+
+    &.hour-cell {
+      text-align: center;
+      width: 10%;
+    }
+  }
+}
