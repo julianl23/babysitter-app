@@ -1,0 +1,21 @@
+<h2>Your Dashboard</h2>
+
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h3>Current bookings</h3>
+    <!-- If there are bookings, display them below  -->
+
+    <!-- Otherwise, display a CTA to find a booking -->
+    <p> Looks like you haven't booked a babysitter yet. </p>
+    <%= link_to 'Find a babysitter now!', search_path, class: 'btn btn-primary' %>
+  </div>
+
+  <div class="col-xs-12 col-md-6">
+    <h3>Update your profile</h3>
+    <p>
+      Make sure your profile is up to date! Let us know about your family and your needs, so that candidates can be
+      best informed when accepting your bookings.
+    </p>
+    <%= link_to 'Update your profile', '', class: 'btn btn-primary' %>
+  </div>
+</div>

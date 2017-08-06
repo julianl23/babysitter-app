@@ -11,13 +11,14 @@
 
   <body>
     <%= render "layouts/nav" %>
-    <% if notice.present? %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if alert.present? %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
     <div class="container main">
+      <% if notice.present? %>
+        <p class="notice alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+
       <%= yield %>
     </div>
   </body>

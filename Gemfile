@@ -34,8 +34,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Project games
+gem 'bootstrap-sass', '~> 3.3.7'
 gem 'devise', '~> 4.3.0'
-gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'font-awesome-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
