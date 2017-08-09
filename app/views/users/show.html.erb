@@ -12,11 +12,23 @@
 <div class="row schedule-wrap">
   <div class="col-xs-12">
     <h3>My Schedule</h3>
-    <div class="calendar">
+    <div class="calendar" id="babysitter-calendar" data-time="<%= @days_from_this_week.first.strftime('%Q').to_i %>">
       <table>
         <thead>
           <tr>
-            <th class="calendar-title" colspan="8"><%= format_week_of_string @days_from_this_week %></th>
+            <th class="calendar-arrow left" colspan="1">
+              <button>
+                <%= fa_icon 'chevron-left' %>
+                <span class="sr-only">View previous week</span>
+              </button>
+            </th>
+            <th class="calendar-title" colspan="6"><%= format_week_of_string @days_from_this_week %></th>
+            <th class="calendar-arrow right" colspan="1">
+              <button>
+                <%= fa_icon 'chevron-right' %>
+                <span class="sr-only">View next week</span>
+              </button>
+            </th>
           </tr>
           <tr class="calendar-day-headers">
             <th></th>
@@ -31,7 +43,7 @@
               <td class="hour-cell"><%= format_hour hour %></td>
               <% 7.times do |index| %>
                 <td>
-                  <button data-id="<%= index %>">
+                  <button class="booking-btn" data-time="<%= timestamp_for_cell(@days_from_this_week[index], hour) %>">
                     <%= fa_icon 'plus' %>
                     <span class="sr-only">Book time</span>
                   </button>

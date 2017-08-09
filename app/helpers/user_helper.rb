@@ -18,4 +18,9 @@ module UserHelper
     last_day = days_of_week.last
     "Week of #{first_day.strftime '%B %-d, %Y'} to #{last_day.strftime '%B %-d, %Y'}"
   end
+
+  def timestamp_for_cell(date, hour)
+    timestamp_date = Time.new(date.year, date.month, date.mday, hour, 0).in_time_zone
+    timestamp_date.to_i * 1000
+  end
 end

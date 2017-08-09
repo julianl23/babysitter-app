@@ -1,0 +1,27 @@
+<div class="row">
+  <h2>Add a new availability block</h2>
+  <div class="col-xs-12">
+    <div>
+      <%= form_for(@availability, url: user_availabilities_path(current_user.id)) do |f| %>
+        <div class="field">
+          <%= f.label :from %><br />
+          <%= f.datetime_select :from, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :to %><br />
+          <%= f.datetime_select :to %>
+        </div>
+
+        <div class="field">
+          <%= f.label :note %><br />
+          <%= f.text_area :note %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit 'Add my availability' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
