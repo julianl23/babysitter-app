@@ -8,19 +8,19 @@ class User < ApplicationRecord
   has_many :availabilities
   before_validation :set_default_role 
 
-  def full_name 
+  def full_name
     "#{self.first_name} #{self.last_name}"
   end
 
-  def is_family?
+  def family?
     role.name == 'family'
   end
 
-  def is_babysitter?
+  def babysitter?
     role.name == 'babysitter'
   end
 
-  def is_admin?
+  def admin?
     role.name = 'admin'
   end
 

@@ -3,11 +3,16 @@
 <div class="row">
   <div class="col-xs-12 col-md-6">
     <h3>Current bookings</h3>
-    <!-- If there are bookings, display them below  -->
 
-    <!-- Otherwise, display a CTA to find a booking -->
+    <!-- THIS IS WHERE VIEW LOGIC WILL GO -->
     <p> Looks like you haven't booked a babysitter yet. </p>
-    <%= link_to 'Find a babysitter now!', search_path, class: 'btn btn-primary' %>
+    <!-- END: THIS IS WHERE VIEW LOGIC WILL GO -->
+
+    <% if current_user.family? %>
+      <%= link_to 'Find a babysitter now!', search_path, class: 'btn btn-primary' %>
+    <% elsif current_user.babysitter? %>
+      <%= link_to 'View your calendar', user_path(current_user), class: 'btn btn-primary' %>
+    <% end %>
   </div>
 
   <div class="col-xs-12 col-md-6">

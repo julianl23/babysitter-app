@@ -1,26 +1,119 @@
+.schedule-wrap {
+  padding-bottom: 40px;
+}
+
 .calendar {
-  th.calendar-title {
+  width: 100%;
+
+  .calendar-title {
     font-size: 1.17em;
     text-align: center;
   }
 
-  .calendar-arrow.right {
-    text-align: right;
-  }
+  .calendar-body {
+    display: flex;
+    width: 100%;
 
-  .calendar-day-headers {
-    th {
-      font-weight: normal;
-      padding: 0 2.5px;
-    }
-  }
+    .calendar-day {
+      border-left: 1px solid #ccc;
+      border-top: 1px solid #ccc;
 
-  td {
-    border: 1px solid #bbb;
+      &:last-child {
+        border-right: 1px solid #ccc;
+      }
 
-    &.hour-cell {
-      text-align: center;
-      width: 10%;
+      .calendar-heading {
+        border-bottom: 1px solid #ccc;
+        height: 75px;
+        max-height: 75px;
+        text-align: center;
+      }
+
+      .calendar-hour {
+        border-bottom: 1px solid #ccc;
+        display: flex;
+        height: 35px;
+        justify-content: center;
+        max-height: 35px;
+        max-width: 90px;
+        width: 90px;
+
+        &.available {
+          background: #5FCAF9;
+          text-align: center;
+
+          &.start {
+            border-bottom: none;
+          }
+
+          &.middle {
+            border: none;
+          }
+
+          &.end {
+            border-top: none;
+          }
+        }
+
+        &.selected{
+          background: #C0FF3E;
+        }
+
+        .booking-btn {
+          margin: 5px 0;
+          height: 25px;
+          width: 25px;
+        }
+      }
     }
   }
 }
+
+//.calendar {
+//  th.calendar-title {
+//    font-size: 1.17em;
+//    text-align: center;
+//  }
+//
+//  .calendar-arrow.right {
+//    text-align: right;
+//  }
+//
+//  .calendar-day-headers {
+//    th {
+//      font-weight: normal;
+//      padding: 0 2.5px;
+//    }
+//  }
+//
+//  td {
+//    border: 1px solid #bbb;
+//    height: 22px;
+//
+//    &.hour-cell {
+//      text-align: center;
+//      width: 10%;
+//    }
+//
+//    &.selected {
+//      background: #C0FF3E;
+//    }
+//
+//    .booking-btn {
+//      display: none;
+//      margin: 0 auto;
+//      height: 20px;
+//      width: 50%;
+//
+//      &.selected {
+//        display: block;
+//      }
+//    }
+//
+//    &:hover {
+//      .booking-btn {
+//        display: block;
+//      }
+//    }
+//  }
+//}
