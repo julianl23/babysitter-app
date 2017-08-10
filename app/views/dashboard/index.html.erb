@@ -2,10 +2,35 @@
 
 <div class="row">
   <div class="col-xs-12 col-md-6">
-    <h3>Current bookings</h3>
+    <% if current_user.babysitter? %>
+      <h3>Current availabilities</h3>
+      <% if @availabilities.empty? %>
+        <p>Looks like you haven't made yourself available yet.</p>
+      <% else %>
+        <table>
+          <thead>
+            <tr>
+              <th>Day</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @availabilities.each do |availability| %>
+            <tr>
+              <td>
+                <%= availability.from.strftime('%B %-d, %Y %l:%M %p') %> -
+                <%= availability.to.strftime('%B %-d, %Y %l:%M %p') %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    <% elsif current_user.family? %>
+      <h3>Current bookings</h3>
+      <p>Looks like you haven't booked a babysitter yet.</p>
+    <% end %>
 
-    <!-- THIS IS WHERE VIEW LOGIC WILL GO -->
-    <p> Looks like you haven't booked a babysitter yet. </p>
+
     <!-- END: THIS IS WHERE VIEW LOGIC WILL GO -->
 
     <% if current_user.family? %>
@@ -16,11 +41,19 @@
   </div>
 
   <div class="col-xs-12 col-md-6">
-    <h3>Update your profile</h3>
-    <p>
-      Make sure your profile is up to date! Let us know about your family and your needs, so that candidates can be
-      best informed when accepting your bookings.
-    </p>
-    <%= link_to 'Update your profile', '', class: 'btn btn-primary' %>
+    <% if current_user.babysitter? %>
+      <h3>Add your availability</h3>
+      <p>
+        View your profile now to add availabilities to your calendar.
+      </p>
+      <%= link_to 'Add your availability', current_user, class: 'btn btn-primary' %>
+    <% else %>
+      <h3>Update your profile</h3>
+      <p>
+        Make sure your profile is up to date! Let us know about your family and your needs, so that candidates can be
+        best informed when accepting your bookings.
+      </p>
+      <%= link_to 'Update your profile', '', class: 'btn btn-primary' %>
+    <% end %>
   </div>
 </div>
