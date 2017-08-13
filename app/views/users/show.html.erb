@@ -14,13 +14,22 @@
   <div class="col-xs-12">
     <h3>My Schedule</h3>
 
+    <div class="selected-window-wrap hide" id="selected-window-wrap">
+      <p>
+        Selected:
+        <span id="selected-window"></span>
+        <button id="submit-window">Submit</button>
+      </p>
+    </div>
     <div
         class="calendar"
         id="calendar"
         data-user="<%= @user.id %>"
         data-user-role="<%= @user.role.name %>"
         data-time="<%= @days_from_this_week.first.strftime('%Q').to_i %>">
-      <div class="calendar-title"><%= format_week_of_string @days_from_this_week %></div>
+      <div class="calendar-title">
+        <h4><%= format_week_of_string @days_from_this_week %></h4>
+      </div>
       <div class="calendar-body">
         <div class="calendar-day">
           <div class="calendar-heading"></div>
@@ -39,14 +48,6 @@
           </div>
         <% end %>
       </div>
-    </div>
-
-    <div class="selected-window-wrap hide" id="selected-window-wrap">
-      <p>
-        Selected:
-        <span id="selected-window"></span>
-        <button id="submit-window">Submit</button>
-      </p>
     </div>
   </div>
 </div>

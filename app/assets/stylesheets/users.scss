@@ -17,6 +17,7 @@
     .calendar-day {
       border-left: 1px solid #ccc;
       border-top: 1px solid #ccc;
+      max-width: 150px;
 
       &:last-child {
         border-right: 1px solid #ccc;
@@ -35,8 +36,7 @@
         height: 35px;
         justify-content: center;
         max-height: 35px;
-        max-width: 90px;
-        width: 90px;
+        width: 100%;
 
         &.available {
           background: #5FCAF9;
@@ -75,51 +75,8 @@
   }
 }
 
-//.calendar {
-//  th.calendar-title {
-//    font-size: 1.17em;
-//    text-align: center;
-//  }
-//
-//  .calendar-arrow.right {
-//    text-align: right;
-//  }
-//
-//  .calendar-day-headers {
-//    th {
-//      font-weight: normal;
-//      padding: 0 2.5px;
-//    }
-//  }
-//
-//  td {
-//    border: 1px solid #bbb;
-//    height: 22px;
-//
-//    &.hour-cell {
-//      text-align: center;
-//      width: 10%;
-//    }
-//
-//    &.selected {
-//      background: #C0FF3E;
-//    }
-//
-//    .booking-btn {
-//      display: none;
-//      margin: 0 auto;
-//      height: 20px;
-//      width: 50%;
-//
-//      &.selected {
-//        display: block;
-//      }
-//    }
-//
-//    &:hover {
-//      .booking-btn {
-//        display: block;
-//      }
-//    }
-//  }
-//}
+.selected-window-wrap {
+  border: 1px solid red;
+  margin: 20px 0;
+  padding: 10px 10px 0 10px;
+}
