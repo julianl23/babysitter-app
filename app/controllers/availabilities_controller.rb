@@ -1,5 +1,6 @@
 class AvailabilitiesController < ApplicationController
-  before_action :authenticate_user!, :check_role
+  before_action :authenticate_user!
+  before_action :check_role, except: :show
 
   def new
     @availability = Availability.new
@@ -62,6 +63,11 @@ class AvailabilitiesController < ApplicationController
         }, status: 202
       end
     end
+  end
+
+  def show
+    @availability = Availability.find params[:id]
+    @booking = Booking.new
   end
 
   private

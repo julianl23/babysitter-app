@@ -3,40 +3,10 @@
 <div class="row">
   <div class="col-xs-12 col-md-6">
     <% if current_user.babysitter? %>
-      <h3>Current availabilities</h3>
-      <% if @availabilities.empty? %>
-        <p>Looks like you haven't made yourself available yet.</p>
-      <% else %>
-        <table>
-          <thead>
-            <tr>
-              <th>Day</th>
-            </tr>
-          </thead>
-          <tbody>
-          <% @availabilities.each do |availability| %>
-            <tr>
-              <td>
-                <%= availability.from.strftime('%B %-d, %Y %l:%M %p') %> -
-                <%= availability.to.strftime('%B %-d, %Y %l:%M %p') %>
-              </td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      <% end %>
+      <%= render partial: 'dashboard/babysitter/availabilities', locals: { availabilities: @availabilities } %>
+      <%= render partial: 'dashboard/babysitter/bookings', locals: { bookings: @bookings } %>
     <% elsif current_user.family? %>
-      <h3>Current bookings</h3>
-      <p>Looks like you haven't booked a babysitter yet.</p>
-    <% end %>
-
-
-    <!-- END: THIS IS WHERE VIEW LOGIC WILL GO -->
-
-    <% if current_user.family? %>
-      <%= link_to 'Find a babysitter now!', search_path, class: 'btn btn-primary' %>
-    <% elsif current_user.babysitter? %>
-      <%= link_to 'View your calendar', user_path(current_user), class: 'btn btn-primary' %>
+      <%= render partial: 'dashboard/family/bookings', locals: { bookings: @bookings } %>
     <% end %>
   </div>
 

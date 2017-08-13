@@ -1,0 +1,24 @@
+<h3>Current availabilities</h3>
+<% if availabilities.empty? %>
+  <p>Looks like you haven't made yourself available yet.</p>
+<% else %>
+  <table>
+    <thead>
+    <tr>
+      <th>Day</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% availabilities.each do |availability| %>
+      <tr>
+        <td>
+          <%= availability.from.strftime('%B %-d, %Y %l:%M %p') %> -
+          <%= availability.to.strftime('%B %-d, %Y %l:%M %p') %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= link_to 'View your calendar', user_path(current_user), class: 'btn btn-primary' %>

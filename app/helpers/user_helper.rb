@@ -1,18 +1,4 @@
 module UserHelper
-  def format_hour(hour)
-    if [0, 12].include?(hour)
-      suffix = hour.zero? ? 'AM' : 'PM'
-      formatted_hour = 12
-    elsif hour >= 12 && hour < 24
-      suffix = 'PM'
-      formatted_hour = hour - 12
-    else
-      suffix = 'AM'
-      formatted_hour = hour
-    end
-    "#{formatted_hour}:00 #{suffix}"
-  end
-
   def format_week_of_string(days_of_week)
     first_day = days_of_week.first
     last_day = days_of_week.last
@@ -41,18 +27,19 @@ module UserHelper
     if current_availabilities.empty? && user_is_babysitter
       tag_content = button_tag(fa_icon('plus'), class: 'booking-btn', data: { time: timestamp_for_cell(day, hour)})
     elsif !current_availabilities.empty?
-      from_date = current_availabilities[0].from
-      to_date = current_availabilities[0].to
+      availability = current_availabilities[0]
+      from_date = availability.from
+      to_date = availability.to
       day_at_hour_i = day_at_hour.to_i
       from_date_i = from_date.to_i
       to_date_i = to_date.to_i
 
       if day_at_hour_i == from_date_i
-        if current_user == current_availabilities[0].user
+        if current_user == availability.user
           tag_content = available_from_string(from_date, to_date).html_safe
-          tag_content << link_to(fa_icon('times'), user_availability_path(current_user, current_availabilities[0].id), class: 'btn', method: 'delete')
+          tag_content << link_to(fa_icon('times'), user_availability_path(current_user, availability.id), class: 'btn', method: 'delete')
         elsif user_is_family
-          tag_content = link_to(available_from_string(from_date, to_date), '')
+          tag_content = link_to(available_from_string(from_date, to_date), user_availability_path(availability.user, availability))
         end
         tag_classes << 'available start'
       elsif day_at_hour_i > from_date_i && day_at_hour_i < to_date_i

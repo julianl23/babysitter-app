@@ -1,0 +1,37 @@
+<% unless bookings[:pending].empty? && bookings[:booked].empty? %>
+  <% if bookings[:pending].present? %>
+    <div>
+      <h3>Pending Bookings</h3>
+      <table>
+        <thead></thead>
+        <tbody>
+        <% bookings[:pending].each do |booking| %>
+            <tr>
+              <td>
+                <%= render partial: 'dashboard/babysitter/booking', locals: { booking: booking } %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+
+  <% if bookings[:booked].present? %>
+    <div>
+      <h3>Accepted Bookings</h3>
+      <table>
+        <thead></thead>
+        <tbody>
+        <% bookings[:booked].each do |booking| %>
+          <tr>
+            <td>
+              <%= render partial: 'dashboard/family/booking', locals: { booking: booking } %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+<% end %>

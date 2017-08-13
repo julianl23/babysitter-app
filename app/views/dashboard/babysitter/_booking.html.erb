@@ -1,0 +1,10 @@
+<p><%= booking.family.full_name %></p>
+<p>From: <%= booking.from.strftime('%B %-d, %Y %l:%M %p') %></p>
+<p>To: <%= booking.to.strftime('%B %-d, %Y %l:%M %p') %></p>
+
+<% unless booking.accepted? %>
+  <p>
+    <%= link_to 'Decline', decline_booking_path(booking), class: 'btn btn-default', method: :post %>
+    <%= link_to 'Accept', accept_booking_path(booking), class: 'btn btn-primary', method: :post %>
+  </p>
+<% end %>

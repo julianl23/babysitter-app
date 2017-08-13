@@ -6,7 +6,11 @@ class User < ApplicationRecord
 
   belongs_to :role
   has_many :availabilities
-  before_validation :set_default_role 
+  # has_many :bookings, foreign_key: :babysitter_id
+  # has_many :bookings, foreign_key: :family_id
+  has_many :babysitter_bookings, class_name: 'Booking', foreign_key: 'babysitter_id'
+  has_many :family_bookings, class_name: 'Booking', foreign_key: 'family_id'
+  before_validation :set_default_role
 
   def full_name
     "#{self.first_name} #{self.last_name}"
@@ -22,6 +26,22 @@ class User < ApplicationRecord
 
   def admin?
     role.name = 'admin'
+  end
+
+  def pending_bookings
+    if family?
+      family_bookings.where(accepted: false)
+    elsif babysitter?
+      babysitter_bookings.where(accepted: false)
+    end
+  end
+
+  def accepted_bookings
+    if family?
+      family_bookings.where(accepted: true)
+    elsif babysitter?
+      babysitter_bookings.where(accepted: true)
+    end
   end
 
   private
