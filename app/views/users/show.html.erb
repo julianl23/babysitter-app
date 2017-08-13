@@ -34,7 +34,7 @@
           <div class="calendar-day">
             <div class="calendar-heading"><%= day.strftime '%A, %B %-d' %></div>
             <% [*0..23].each do |hour| %>
-              <%= availability_for_hour(@availabilities, day, hour) %>
+              <%= availability_for_hour(@user, @availabilities, day, hour) %>
             <% end %>
           </div>
         <% end %>

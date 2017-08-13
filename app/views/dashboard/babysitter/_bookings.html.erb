@@ -2,7 +2,7 @@
   <% if bookings[:pending].present? %>
     <div>
       <h3>Pending Bookings</h3>
-      <table>
+      <table class="table">
         <thead></thead>
         <tbody>
         <% bookings[:pending].each do |booking| %>
@@ -20,7 +20,7 @@
   <% if bookings[:booked].present? %>
     <div>
       <h3>Accepted Bookings</h3>
-      <table>
+      <table class="table">
         <thead></thead>
         <tbody>
         <% bookings[:booked].each do |booking| %>

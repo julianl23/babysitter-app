@@ -16,7 +16,7 @@ module UserHelper
     "Available #{from_string} to #{to_string}"
   end
 
-  def availability_for_hour(availabilities, day, hour)
+  def availability_for_hour(user, availabilities, day, hour)
     day_at_hour = day.change({ hour: hour })
     current_availabilities = availabilities.select { |availability| day_at_hour >= availability.from && day_at_hour <= availability.to }
     tag_content = ''
@@ -24,7 +24,7 @@ module UserHelper
     user_is_babysitter = user_signed_in? && current_user.babysitter?
     user_is_family = user_signed_in? && current_user.family?
 
-    if current_availabilities.empty? && user_is_babysitter
+    if current_availabilities.empty? && user_is_babysitter && user.id == current_user.id
       tag_content = button_tag(fa_icon('plus'), class: 'booking-btn', data: { time: timestamp_for_cell(day, hour)})
     elsif !current_availabilities.empty?
       availability = current_availabilities[0]
